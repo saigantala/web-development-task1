@@ -1,0 +1,1 @@
+# No external dependencies required (pure HTML5/CSS3/JS)

@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Personal portfolio website of Yethendra Sai Gantala — aspiring web developer learning HTML5, semantic markup, and modern web design.">
+  <title>Yethendra Sai Gantala | Personal Portfolio</title>
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --surface-alt: #f1f5f9;
+      --text: #0f172a;
+      --muted: #475569;
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --accent: #0ea5e9;
+      --border: #e2e8f0;
+      --success-bg: #ecfdf5;
+      --success-border: #10b981;
+      --success-text: #065f46;
+      --radius: 14px;
+      --shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Header & Navigation */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-container {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0.9rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand h1 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+
+    .brand span {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      padding: 0.45rem 0.85rem;
+      border-radius: 8px;
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--muted);
+      transition: background-color 0.2s, color 0.2s;
+    }
+
+    nav a:hover,
+    nav a:focus-visible {
+      background-color: var(--surface-alt);
+      color: var(--primary);
+      text-decoration: none;
+      outline: none;
+    }
+
+    /* Main Layout */
+    main {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+    }
+
+    section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2.25rem;
+      box-shadow: var(--shadow);
+      scroll-margin-top: 5.5rem;
+    }
+
+    .section-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--primary);
+      background: #eff6ff;
+      padding: 0.25rem 0.65rem;
+      border-radius: 999px;
+      margin-bottom: 0.65rem;
+    }
+
+    section h2 {
+      font-size: 1.65rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    /* Hero / About Section */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 2.25rem;
+      align-items: center;
+    }
+
+    .profile-frame {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 3px solid var(--border);
+      box-shadow: 0 12px 24px -8px rgba(37, 99, 235, 0.18);
+      background: var(--surface-alt);
+    }
+
+    .profile-frame img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    .about-content p {
+      color: var(--muted);
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+
+    .about-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.35rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.65rem 1.25rem;
+      border-radius: 10px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: transform 0.15s, background-color 0.2s, border-color 0.2s;
+    }
+
+    .btn:active {
+      transform: translateY(1px);
+    }
+
+    .btn-primary {
+      background-color: var(--primary);
+      color: #ffffff;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--primary-dark);
+      text-decoration: none;
+    }
+
+    .btn-outline {
+      background-color: var(--surface);
+      color: var(--text);
+      border-color: var(--border);
+    }
+
+    .btn-outline:hover {
+      background-color: var(--surface-alt);
+      text-decoration: none;
+    }
+
+    /* Skills Section */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.25rem;
+      margin-top: 0.5rem;
+    }
+
+    .skill-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.35rem;
+    }
+
+    .skill-card h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      color: var(--text);
+    }
+
+    .skill-card ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .skill-card li {
+      position: relative;
+      padding-left: 1.25rem;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .skill-card li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    /* Gallery Section */
+    .gallery-intro {
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+    }
+
+    figure.gallery-item {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--bg);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .gallery-thumb {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #dbeafe 0%, #e0f2fe 100%);
+      padding: 1rem;
+    }
+
+    .gallery-thumb svg {
+      width: 56px;
+      height: 56px;
+      color: var(--primary);
+    }
+
+    figure.gallery-item figcaption {
+      padding: 0.95rem 1rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    figure.gallery-item figcaption strong {
+      display: block;
+      color: var(--text);
+      margin-bottom: 0.2rem;
+    }
+
+    /* Contact Section */
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.35fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .contact-info p {
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .contact-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      font-size: 0.94rem;
+    }
+
+    .contact-links li strong {
+      color: var(--text);
+      margin-right: 0.35rem;
+    }
+
+    form.contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .form-group label {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.7rem 0.9rem;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      color: var(--text);
+      background: var(--bg);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.14);
+      background: var(--surface);
+    }
+
+    .form-status {
+      display: none;
+      padding: 0.85rem 1rem;
+      border-radius: 10px;
+      background: var(--success-bg);
+      border: 1px solid var(--success-border);
+      color: var(--success-text);
+      font-size: 0.92rem;
+    }
+
+    .form-status.visible {
+      display: block;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+      padding: 1.5rem 1.25rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .footer-inner {
+      max-width: 1040px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    @media (max-width: 768px) {
+      section {
+        padding: 1.5rem;
+      }
+
+      .about-grid,
+      .contact-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .profile-frame {
+        max-width: 240px;
+        margin: 0 auto;
+      }
+    }
+  </style>
+</head>
+<body id="top">
+  <header>
+    <div class="nav-container">
+      <div class="brand">
+        <h1>Yethendra Sai Gantala</h1>
+        <span>Web Development Learner &amp; Portfolio</span>
+      </div>
+      <nav aria-label="Primary Navigation">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="about" aria-labelledby="about-heading">
+      <div class="about-grid">
+        <div class="profile-frame">
+          <img
+            src="images/profile.jpg"
+            alt="Portrait of Yethendra Sai Gantala in a light blue button-up shirt outdoors"
+          >
+        </div>
+        <div class="about-content">
+          <span class="section-tag">About Me</span>
+          <h2 id="about-heading">Hello, I'm Yethendra Sai Gantala</h2>
+          <p>
+            I am a web development beginner building a strong foundation in HTML5, semantic page structure, and clean front-end design. This personal portfolio is my Week 1 project, designed to showcase structured markup, accessible navigation, and responsive layout principles.
+          </p>
+          <p>
+            My focus is on writing readable, standards-compliant code in VS Code, organizing assets cleanly for GitHub, and turning ideas into functional web pages step by step.
+          </p>
+          <div class="about-actions">
+            <a href="#contact" class="btn btn-primary">Get in Touch</a>
+            <a href="#skills" class="btn btn-outline">Explore Skills</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" aria-labelledby="skills-heading">
+      <span class="section-tag">Capabilities</span>
+      <h2 id="skills-heading">Skills &amp; Learning Focus</h2>
+      <div class="skills-grid">
+        <article class="skill-card">
+          <h3>HTML5 &amp; Structure</h3>
+          <ul>
+            <li>Document structure (DOCTYPE, head, body)</li>
+            <li>Semantic tags (header, nav, main, section, footer)</li>
+            <li>Accessible headings, lists, and links</li>
+            <li>Images with descriptive alt attributes</li>
+          </ul>
+        </article>
+        <article class="skill-card">
+          <h3>Forms &amp; Interactivity</h3>
+          <ul>
+            <li>Contact forms with input, textarea, and button</li>
+            <li>Built-in HTML5 validation attributes</li>
+            <li>Internal anchor navigation links</li>
+            <li>Accessible form labels and feedback</li>
+          </ul>
+        </article>
+        <article class="skill-card">
+          <h3>Developer Workflow</h3>
+          <ul>
+            <li>VS Code workspace setup &amp; extensions</li>
+            <li>GitHub repository structure (README &amp; assets)</li>
+            <li>Browser testing &amp; HTML validation</li>
+            <li>Responsive layout fundamentals</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="gallery" aria-labelledby="gallery-heading">
+      <span class="section-tag">Practice Highlights</span>
+      <h2 id="gallery-heading">Week 1 Milestone Gallery</h2>
+      <p class="gallery-intro">
+        Key building blocks practiced while creating this portfolio in VS Code.
+      </p>
+      <div class="gallery-grid">
+        <figure class="gallery-item">
+          <div class="gallery-thumb" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="16 18 22 12 16 6"></polyline>
+              <polyline points="8 6 2 12 8 18"></polyline>
+            </svg>
+          </div>
+          <figcaption>
+            <strong>Semantic HTML5</strong>
+            Clean document outline using header, nav, main, section, and footer tags.
+          </figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <div class="gallery-thumb" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+              <circle cx="8.5" cy="8.5" r="1.5"></circle>
+              <polyline points="21 15 16 10 5 21"></polyline>
+            </svg>
+          </div>
+          <figcaption>
+            <strong>Media &amp; Alt Text</strong>
+            Optimized portrait integration with descriptive alt attributes for accessibility.
+          </figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <div class="gallery-thumb" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+          </div>
+          <figcaption>
+            <strong>Validated Contact Form</strong>
+            Interactive form with required fields, email validation, and instant feedback.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="contact" aria-labelledby="contact-heading">
+      <span class="section-tag">Contact</span>
+      <h2 id="contact-heading">Send a Message</h2>
+      <div class="contact-layout">
+        <div class="contact-info">
+          <p>
+            Have a question, project idea, or feedback on my Week 1 HTML portfolio? Use the form to reach out directly.
+          </p>
+          <ul class="contact-links">
+            <li><strong>Name:</strong> Yethendra Sai Gantala</li>
+            <li><strong>Focus:</strong> HTML5 &amp; Front-End Foundations</li>
+            <li>
+              <strong>GitHub:</strong>
+              <a href="https://github.com/saigantala" target="_blank" rel="noopener noreferrer">github.com/saigantala</a>
+            </li>
+            <li>
+              <strong>LinkedIn:</strong>
+              <a href="https://www.linkedin.com/in/gantala-yethendra-sai-40953b312?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener noreferrer">Yethendra Sai Gantala on LinkedIn</a>
+            </li>
+          </ul>
+        </div>
+
+        <form id="contact-form" class="contact-form">
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Enter your name"
+              required
+              minlength="2"
+            >
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="you@example.com"
+              required
+            >
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="4"
+              placeholder="Write your message here..."
+              required
+              minlength="10"
+            ></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Send Message</button>
+          <div id="form-status" class="form-status" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <p>&copy; 2026 Yethendra Sai Gantala. Built with semantic HTML5.</p>
+      <a href="#top">Back to top &uarr;</a>
+    </div>
+  </footer>
+
+  <script>
+    const contactForm = document.getElementById('contact-form');
+    const formStatus = document.getElementById('form-status');
+
+    contactForm.addEventListener('submit', function (event) {
+      event.preventDefault();
+      if (!contactForm.checkValidity()) {
+        contactForm.reportValidity();
+        return;
+      }
+
+      const senderName = document.getElementById('name').value.trim();
+      const senderEmail = document.getElementById('email').value.trim();
+
+      formStatus.textContent = `Thank you, ${senderName}! Your message from ${senderEmail} has been recorded.`;
+      formStatus.classList.add('visible');
+      contactForm.reset();
+    });
+  </script>
+</body>
+</html>
